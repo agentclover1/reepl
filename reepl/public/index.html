@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>quickchat</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div id="join-screen" class="card">
+      <h1>quickchat</h1>
+      <p class="muted">no accounts — pick a nickname and join. messages are temporary.</p>
+      <input id="nick" placeholder="nickname (max 32 chars)" maxlength="32" />
+      <input id="room" placeholder="room (default: main)" maxlength="64" />
+      <div class="row">
+        <button id="join">join</button>
+        <button id="random">random nick</button>
+      </div>
+      <p class="muted small">tip: share the url + <code>?room=roomname</code> if you want a private room</p>
+    </div>
+
+    <div id="chat-screen" class="hidden">
+      <div class="header">
+        <div>
+          <strong id="room-name">main</strong>
+          <span id="you-nick" class="muted"></span>
+        </div>
+        <button id="leave">leave</button>
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite"></div>
+
+      <form id="msg-form" class="composer" action="#" onsubmit="return false;">
+        <input id="msg-input" autocomplete="off" placeholder="say something..." maxlength="1000" />
+        <button id="send">send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/chat.js"></script>
+</body>
+</html>
